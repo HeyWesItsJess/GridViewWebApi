@@ -7,64 +7,25 @@ namespace GridViewWebApi.Models
 {
     public class GridViewModel
     {
-        private GridView theGridView;
         public GridViewModel(GridView theGridView)
         {
-            this.theGridView = theGridView;
+            GridTypeName = new Services.GridViewDataService().gridName(theGridView.GridTypeId);
+            ViewName = theGridView.ViewName;
+            ColumnLayout = theGridView.ColumnLayout;
+            FilterDefinition = theGridView.FilterDefinition;
+            IsDefault = theGridView.IsDefault;
+            IsShared = theGridView.IsShared;
+            UserID = theGridView.UserID;
         }
-
-        public string GridType
+        public GridViewModel()
         {
-            get
-            {
-                return theGridView.GridType.GridTypeName;
-            }
         }
-        public string ViewName
-        {
-            get
-            {
-                return theGridView.ViewName;
-            }
-        }
-
-        public string ColumnLayout
-        {
-            get
-            {
-                return theGridView.ColumnLayout;
-            }
-        }
-        public string FilterDefinition
-        {
-            get
-            {
-                return theGridView.FilterDefinition;
-            }
-        }
-
-        public bool IsDefault
-        {
-            get
-            {
-                return theGridView.IsDefault;
-            }
-        }
-
-        public bool IsShared
-        {
-            get
-            {
-                return theGridView.IsShared;
-            }
-        }
-
-        public int UserID
-        {
-            get
-            {
-                return theGridView.UserID;
-            }
-        }
+        public string GridTypeName { get; set; }
+        public string ViewName { get; set; }
+        public string ColumnLayout { get; set; }
+        public string FilterDefinition { get; set; }
+        public bool? IsDefault { get; set; }
+        public bool? IsShared { get; set; }
+        public int? UserID { get; set; }
     }
 }
